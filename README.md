@@ -6,39 +6,38 @@ Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Pu
 ---
 ## PR saat ini (Bantuin beresin dong ges hehe)
 1. Pilih diagnosis dan diganosis banding. Kan sekarang masih manual tuh
-> **potensinya:**
----
+**potensi solusinya:**
 '''python
-def select_diagnosis(driver, search_text):
-    # 1. Klik container untuk membuka dropdown
-    trigger = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, ".options-multi-diagnosis"))
-    )
-    trigger.click()
-    
-    # 2. Tunggu input search muncul di dalam dropdown yang baru terbuka
-    # Dropdown biasanya memiliki class 'absolute' dan 'z-50'
-    search_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, ".options-multi-diagnosis input[placeholder='search']"))
-    )
-    
-    # 3. Masukkan teks diagnosis
-    search_input.clear()
-    search_input.send_keys(search_text)
-    
-    # 4. Tekan Enter untuk trigger filtering (beberapa komponen butuh ini)
-    search_input.send_keys(Keys.ENTER)
-    
-    # Tunggu sebentar agar animasi filtering selesai
-    time.sleep(1)
-    
-    # 5. Pilih opsi pertama yang muncul yang mengandung teks yang kita cari
-    # Kita cari div di dalam dropdown yang teksnya cocok
-    options_xpath = f"//div[contains(@class, 'options-multi-diagnosis')]//div[contains(text(), '{search_text}')]"
-    first_option = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, options_xpath))
-    )
-    first_option.click()
+    def select_diagnosis(driver, search_text):
+        # 1. Klik container untuk membuka dropdown
+        trigger = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".options-multi-diagnosis"))
+        )
+        trigger.click()
+        
+        # 2. Tunggu input search muncul di dalam dropdown yang baru terbuka
+        # Dropdown biasanya memiliki class 'absolute' dan 'z-50'
+        search_input = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".options-multi-diagnosis input[placeholder='search']"))
+        )
+        
+        # 3. Masukkan teks diagnosis
+        search_input.clear()
+        search_input.send_keys(search_text)
+        
+        # 4. Tekan Enter untuk trigger filtering (beberapa komponen butuh ini)
+        search_input.send_keys(Keys.ENTER)
+        
+        # Tunggu sebentar agar animasi filtering selesai
+        time.sleep(1)
+        
+        # 5. Pilih opsi pertama yang muncul yang mengandung teks yang kita cari
+        # Kita cari div di dalam dropdown yang teksnya cocok
+        options_xpath = f"//div[contains(@class, 'options-multi-diagnosis')]//div[contains(text(), '{search_text}')]"
+        first_option = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, options_xpath))
+        )
+        first_option.click()
 '''
 Tapi gw belum nyoba dan masih sibuk isip dulu
 
