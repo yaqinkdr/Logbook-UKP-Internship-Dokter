@@ -3,11 +3,12 @@ Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Pu
 
 > **Fungsi utama:** Scrape data pasien dari e-Puskesmas → Enrich anamnesis pakai AI Gemini → Auto input ke logbook UKP Kemkes RI.
 
----
 ## PR saat ini (Bantuin beresin dong ges hehe)
-1. Pilih diagnosis dan diganosis banding. Kan sekarang masih manual tuh
-**potensi solusinya:**
-'''python
+
+1. Pilih diagnosis dan diganosis banding. Kan sekarang masih manual tuh.
+
+   **potensi solusinya:**
+   ```python
     def select_diagnosis(driver, search_text):
         # 1. Klik container untuk membuka dropdown
         trigger = WebDriverWait(driver, 10).until(
@@ -38,7 +39,7 @@ Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Pu
             EC.element_to_be_clickable((By.XPATH, options_xpath))
         )
         first_option.click()
-'''
+    ```
 Tapi gw belum nyoba dan masih sibuk isip dulu
 
 # Cara pakai:
