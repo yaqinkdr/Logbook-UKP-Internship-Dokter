@@ -39,12 +39,11 @@ Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Pu
             EC.element_to_be_clickable((By.XPATH, options_xpath))
         )
         first_option.click()
+    # Cara pakai:
+    # select_diagnosis(driver, "Insulin-dependent")
+    # select_diagnosis(driver, "Other atopic dermatitis")
     ```
-Tapi gw belum nyoba dan masih sibuk isip dulu
-
-# Cara pakai:
-# select_diagnosis(driver, "Insulin-dependent")
-# select_diagnosis(driver, "Other atopic dermatitis")
+  Tapi gw belum nyoba dan masih sibuk isip dulu
 ## 📦 Fitur
 
 | Tab | Fungsi | Output |
