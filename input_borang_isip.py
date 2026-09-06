@@ -966,7 +966,7 @@ Eks: Akral hangat, CRT < 2 detik, edema (-)"""
                             pass
                     except Exception as e:
                         self.log(3, f"⚠️ Gagal Non-Farmakoterapi: {e}")
-# --- 1. JENIS KELAMIN ---
+                # --- 1. JENIS KELAMIN ---
                 gender_raw = row.get("jenis_kelamin", "").strip()
                 gender_map = {
                     "laki-laki": "MALE", "laki_laki": "MALE", "l": "MALE",
@@ -1002,7 +1002,31 @@ Eks: Akral hangat, CRT < 2 detik, edema (-)"""
                         time.sleep(0.2)
                     except Exception as e:
                         self.log(3, f"⚠️ Gagal klik rujukan: {e}")
-              
+                #suntik tanggal pelayanan
+                tanggal_pelayanan = row.get('tanggal_pelayanan') 
+                script = """
+                    var targetDate = arguments[0];
+                    // Pilih span di dalam button (menggunakan ID parent agar lebih presisi)
+                    var btnContainer = document.querySelector('#headlessui-popover-button-v-1-5 button');
+                    var dateSpan = btnContainer.querySelector('span:last-child');
+                    
+                    if (dateSpan) {
+                        dateSpan.innerText = targetDate;
+                        
+                        // Pemicu event untuk sistem (Vue/HeadlessUI)
+                        ['input', 'change', 'blur'].forEach(function(eventName) {
+                            dateSpan.dispatchEvent(new Event(eventName, { bubbles: true }));
+                            btnContainer.dispatchEvent(new Event(eventName, { bubbles: true }));
+                        });
+                        return true;
+                    }
+                    return false;
+                """
+                success = driver.execute_script(script, tanggal_pelayanan)
+                if success:
+                    print(f"Berhasil injeksi tanggal pelayanan: {tanggal_pelayanan}")
+                else:
+                    print("Gagal menemukan elemen tanggal.")
                 self.select_dropdown_by_label(driver, "Jenis Tindakan", "Medik")
                 self.fill_text_by_placeholder(driver, "Masukkan no. Rekam Medis", row.get('no_rekam_medis', ''))
                 self.select_dropdown_by_label(driver, "Sumber Data", "Rawat Jalan")
