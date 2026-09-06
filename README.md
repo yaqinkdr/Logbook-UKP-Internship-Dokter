@@ -7,6 +7,7 @@ Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Pu
 ## PR saat ini (Bantuin beresin dong ges hehe)
 1. Pilih diagnosis dan diganosis banding. Kan sekarang masih manual tuh
 > **potensinya:**
+---
 '''python
 def select_diagnosis(driver, search_text):
     # 1. Klik container untuk membuka dropdown
