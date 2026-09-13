@@ -1,6 +1,8 @@
 # Logbook-UKP-Internship-Dokter
 Tool desktop GUI untuk mengotomatisasi pengisian logbook UKP Puskesmas dari e-Puskesmas ke Portal logbook Internsip Dokter Indonesia - Kemkes RI. Menggunakan **Python + Tkinter + Selenium**.
 
+#   **INFO:** Albert Yohanes Axel Yoagnesto berhasil membuat pilih diagnosis dan diagnosis banding otomatis!
+
 > **Fungsi utama:** Scrape data pasien dari e-Puskesmas → Enrich anamnesis pakai AI Gemini → Auto input ke logbook UKP Kemkes RI.
 
 ---
